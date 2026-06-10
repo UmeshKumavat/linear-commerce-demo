@@ -101,7 +101,7 @@ export function HeroHeadings() {
       </p>
       <div
         className="cgpt-hero-heading"
-        style={{ ["--cgpt-hero-title-size" as any]: "clamp(1.5rem, 3.2vw, 2.25rem)" }}
+        style={{ ["--cgpt-hero-title-size" as any]: "clamp(0.75rem, 1.3vw, 1rem)" }}
       >
         <ResponsiveTopStrokeBox>
           <h4 className="cgpt-heading-4 whitespace-nowrap" style={{ whiteSpace: "nowrap" }}>

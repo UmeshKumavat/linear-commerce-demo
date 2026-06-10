@@ -4,11 +4,13 @@ import { CGPT } from "@/lib/cgpt-assets";
 import { HERO_FEATURES } from "@/lib/cgpt-data";
 
 const CUSTOM_FEATURE_LIST = [
-  "B2C",
-  "B2B",
-  "D2C",
-  "ANY PLATFORM",
-  "ANY COMPLEXITY"
+  "D2C Commerce",
+  "B2C Commerce",
+  "B2B Commerce",
+  "Launch Your Store",
+  "Scale and Migrate",
+  "Enterprise Commerce",
+  "Supply Chain and Operations",
 ];
 
 export function HeroFeatureSlider({ index }: { index: number }) {
@@ -16,11 +18,28 @@ export function HeroFeatureSlider({ index }: { index: number }) {
     <div className="cgpt-feature-col">
       <div className="cgpt-feature-top-container">
         {/* 1. HEADER ROW (indicator + label + icon box) - now a link to contact */}
-        <a href="#contact" className="cgpt-feature-upper-box hover:opacity-85 transition-opacity" style={{ textDecoration: "none" }}>
-          <div className="cgpt-feature-upper-left">
-            <span className="cgpt-feature-upper-dot" />
-            <span className="cgpt-feature-upper-text">
-              TELL US YOUR COMMERCE PROBLEM →
+        <a
+          href="#contact"
+          className="cgpt-feature-upper-box hover:opacity-85 transition-opacity"
+          style={{ textDecoration: "none" }}
+        >
+          <div
+            className="cgpt-feature-upper-left"
+            style={{ minWidth: 0, overflow: "hidden" }}
+          >
+            {/* <span
+              className="cgpt-feature-upper-dot"
+              style={{ flexShrink: 0 }}
+            /> */}
+            <span
+              className="cgpt-feature-upper-text"
+              style={{
+                whiteSpace: "wrap",
+                overflow: "hidden",
+                textOverflow: "ellipsis",
+              }}
+            >
+              Get a free commerce audit&nbsp;→
             </span>
           </div>
           <div className="cgpt-feature-upper-right">
@@ -51,7 +70,11 @@ export function HeroFeatureSlider({ index }: { index: number }) {
             <div className="cgpt-feature-lower-line" />
             <span className="cgpt-feature-lower-arrow">►</span>
           </div>
-          <a href="#solutions" className="cgpt-feature-lower-box hover:opacity-85 transition-opacity" style={{ textDecoration: "none" }}>
+          <a
+            href="#solutions"
+            className="cgpt-feature-lower-box hover:opacity-85 transition-opacity"
+            style={{ textDecoration: "none" }}
+          >
             {/* Corner brackets */}
             <img
               src={CGPT.corner}

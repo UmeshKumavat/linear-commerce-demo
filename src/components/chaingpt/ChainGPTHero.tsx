@@ -6,6 +6,7 @@ import { HeroPromptSlider } from "@/components/chaingpt/HeroPromptSlider";
 import { HeroFeatureSlider } from "@/components/chaingpt/HeroFeatureSlider";
 import { HeroHeadings } from "@/components/chaingpt/HeroHeadings";
 import { HeroAsideRail } from "@/components/chaingpt/HeroAsideRail";
+import { HeroServiceNav } from "@/components/chaingpt/HeroServiceNav";
 import { ScrollExploreLink } from "@/components/chaingpt/ScrollExploreLink";
 import { HeroConnectionLines } from "@/components/chaingpt/HeroConnectionLines";
 import { HERO_FEATURES } from "@/lib/cgpt-data";
@@ -24,12 +25,17 @@ export function ChainGPTHero() {
     <section id="intro" className="cgpt-hero cgpt-grid-bg">
       {/* fixed full-viewport canvas, z-index: 5 */}
       <HeroWebGL />
-      {/* fixed right rail, z-index: 12 */}
+      {/* fixed right dot rail, z-index: 12 */}
       <HeroAsideRail />
+      {/* fixed right service nav panel, z-index: 11 */}
+      <HeroServiceNav />
 
       <div className="cgpt-hero-flex">
         {/* Info row: left prompt + right feature, inside rails column */}
-        <div className="lc-page-column cgpt-hero-info" style={{ paddingTop: "18vh" }}>
+        <div
+          className="lc-page-column cgpt-hero-info"
+          style={{ paddingTop: "7vh" }}
+        >
           <HeroConnectionLines />
           <div className="cgpt-hero-info-left">
             <HeroPromptSlider index={featureIndex} />
@@ -46,7 +52,7 @@ export function ChainGPTHero() {
           </div>
           <div className="cgpt-hero-bottom-center">
             <p className="cgpt-hero-anim-text">
-              Your personal expert in all crypto &amp; blockchain related topics.
+              WE HAVE NEVER RETURNED A COMMERCE PROBLEM UNSOLVED.
             </p>
           </div>
           <div className="cgpt-hero-bottom-right">
@@ -57,4 +63,3 @@ export function ChainGPTHero() {
     </section>
   );
 }
-

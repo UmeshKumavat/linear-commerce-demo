@@ -1,8 +1,8 @@
 const CDN = "https://cdn.prod.website-files.com/64354b8ce4872ad8cd1c7b04";
 
 export const SITE = {
-  name: "ChainGPT",
-  cta: "LAUNCH DAPP",
+  name: "LinearCommerce",
+  cta: "TELL US YOUR COMMERCE PROBLEM ↗",
   ctaHref: "#",
 } as const;
 
@@ -71,12 +71,11 @@ export const HERO_FEATURE_LIST = [
 
 export const HEADER_NAV = [
   { label: "Our Ecosystem", href: "#ecosystem", highlight: true, dropdown: true, icon: true },
-  { label: "Solutions", href: "#solutions", dropdown: true },
-  { label: "Developers", href: "#cases", dropdown: true },
-  { label: "About AI Hub", href: "#unlimited-solutions", dropdown: true },
-  { label: "Learn", href: "#roadmap", dropdown: true },
-  { label: "$CGPT", href: "#our-token", dropdown: true },
-  { label: "Community", href: "#about", dropdown: true },
+  { label: "Services", href: "#solutions", dropdown: true },
+  { label: "Solutions", href: "#cases", dropdown: true },
+  { label: "Partners", href: "#unlimited-solutions", dropdown: true },
+  { label: "Case Studies", href: "#roadmap", dropdown: true },
+  { label: "About", href: "#our-token", dropdown: true },
 ];
 
 export const PRODUCT_STEPS = [

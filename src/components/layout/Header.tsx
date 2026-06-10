@@ -27,7 +27,11 @@ function ChevronDown() {
       className="cgpt-nav-chevron"
       aria-hidden
     >
-      <path d="M0.5 0.5L3.5 3.5L6.5 0.5" stroke="currentColor" strokeWidth="1" />
+      <path
+        d="M0.5 0.5L3.5 3.5L6.5 0.5"
+        stroke="currentColor"
+        strokeWidth="1"
+      />
     </svg>
   );
 }
@@ -40,24 +44,18 @@ function ChevronDown() {
 function HeaderLogo() {
   return (
     <a href="#intro" className="cgpt-header-logo" aria-label={SITE.name}>
-      <span className="cgpt-header-logo-icon-frame">
-        <img
-          src={CGPT.face}
-          alt=""
-          className="cgpt-header-logo-face"
-          width={22}
-          height={22}
-          aria-hidden
-        />
-        <img
-          src={CGPT.eyes}
-          alt=""
-          className="cgpt-header-logo-eyes"
-          width={14}
-          height={14}
-          aria-hidden
-        />
-      </span>
+      <img
+        src="/linear-commerce-dark.jpeg"
+        alt=""
+        className="cgpt-brand-logo cgpt-brand-logo--dark"
+        aria-hidden
+      />
+      <img
+        src="/linear-commerce-light.png"
+        alt=""
+        className="cgpt-brand-logo cgpt-brand-logo--light"
+        aria-hidden
+      />
       <span className="cgpt-header-logo-text">{SITE.name}</span>
     </a>
   );
@@ -99,13 +97,12 @@ function LaunchDappLink() {
 }
 
 export function Header() {
-  const ecosystem = HEADER_NAV[0];   // "Our Ecosystem" — highlighted first item
-  const navLinks  = HEADER_NAV.slice(1); // Remaining nav items
+  const ecosystem = HEADER_NAV[0]; // "Our Ecosystem" — highlighted first item
+  const navLinks = HEADER_NAV.slice(1); // Remaining nav items
 
   return (
     <header className="cgpt-header" role="banner">
       <div className="cgpt-header-container">
-
         {/* Left gutter — logo */}
         <div className="cgpt-header-side">
           <HeaderLogo />
@@ -138,7 +135,6 @@ export function Header() {
           <ThemeToggle />
           <LaunchDappLink />
         </div>
-
       </div>
     </header>
   );

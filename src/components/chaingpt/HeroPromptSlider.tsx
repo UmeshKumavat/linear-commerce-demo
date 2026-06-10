@@ -69,8 +69,12 @@ export function HeroPromptSlider({ index }: { index: number }) {
         <div className="cgpt-hero-slider-inner">
           <div className="cgpt-hero-slide">
             <p>
-              <span className="cgpt-prompt-line-white">THE HARDER THE COMMERCE PROBLEM,</span>{" "}
-              <span className="cgpt-prompt-line-muted">THE MORE WE WANT IT.</span>
+              <span className="cgpt-prompt-line-white">
+                THE HARDER THE COMMERCE PROBLEM,
+              </span>{" "}
+              <span className="cgpt-prompt-line-muted">
+                THE MORE WE WANT IT.
+              </span>
             </p>
           </div>
         </div>
@@ -78,7 +82,8 @@ export function HeroPromptSlider({ index }: { index: number }) {
 
       {/* 3. Below that: ghost/secondary prompt in muted text */}
       <div className="cgpt-hero-prompt-secondary">
-        THERE IS NO COMMERCE CHALLENGE TOO COMPLEX, TOO SPECIFIC, OR TOO UNCONVENTIONAL FOR US. WE HAVE NEVER RETURNED A COMMERCE PROBLEM UNSOLVED.
+        THERE IS NO COMMERCE CHALLENGE TOO COMPLEX, TOO SPECIFIC, OR TOO
+        UNCONVENTIONAL FOR US.
       </div>
     </div>
   );

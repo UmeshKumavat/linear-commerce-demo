@@ -30,30 +30,31 @@ export function HeroConnectionLines() {
 
   const { width, height } = dimensions;
 
-  // Width of columns:
-  // Left column: 38% of container, max 340px.
-  // Right column: 32% of container, max 300px.
   const leftWidth = Math.min(width * 0.38, 340);
   const rightWidth = Math.min(width * 0.32, 300);
 
-  // Left prompt column starts at X = 0. Quote box has width 66.
   const quoteRight = 66;
   const promptRight = leftWidth;
-
-  // Right feature column ends at X = width.
   const featureLeft = width - rightWidth;
 
-  // Line 1: Quote box to DEPLOYING ON... dot (Y=30)
-  // Starts at X=66, Y=33
-  // Ends at X=featureLeft + 19, Y=30
-  // Path: M 66 33 H 140 L 155 18 H (featureLeft - 44) L (featureLeft - 32) 30 H (featureLeft + 19)
-  const line1Path = `M ${quoteRight} 33 H 140 L 155 18 H ${Math.max(160, featureLeft - 44)} L ${Math.max(168, featureLeft - 32)} 30 H ${featureLeft + 19}`;
+  // Line 1: quote box right-edge → upward bracket peak → feature panel dot
+  const l1MidL = Math.max(160, featureLeft - 44);
+  const l1MidR = Math.max(168, featureLeft - 32);
+  const line1Path = `M ${quoteRight} 33 H 140 L 155 18 H ${l1MidL} L ${l1MidR} 30 H ${featureLeft + 19}`;
+  const line1Nodes = [
+    { x: 140,     y: 33 },
+    { x: 155,     y: 18 },
+    { x: l1MidL,  y: 18 },
+    { x: l1MidR,  y: 30 },
+  ];
 
-  // Line 2: Prompt box right edge (X=promptRight, Y=107) to Score box arrowhead (Y=70)
-  // Starts at X=promptRight, Y=107
-  // Ends at X=featureLeft, Y=70
-  // Path: M promptRight 107 H (promptRight + 20) L (promptRight + 20 + 37) 70 H featureLeft
-  const line2Path = `M ${promptRight} 107 H ${promptRight + 20} L ${Math.min(featureLeft, promptRight + 57)} 70 H ${featureLeft}`;
+  // Line 2: prompt box right-edge → diagonal up → score-box arrowhead
+  const l2DiagEnd = Math.min(featureLeft, promptRight + 57);
+  const line2Path = `M ${promptRight} 107 H ${promptRight + 20} L ${l2DiagEnd} 70 H ${featureLeft}`;
+  const line2Nodes = [
+    { x: promptRight + 20, y: 107 },
+    { x: l2DiagEnd,        y: 70  },
+  ];
 
   return (
     <div
@@ -70,43 +71,91 @@ export function HeroConnectionLines() {
         style={{ overflow: "visible" }}
       >
         <defs>
-          <linearGradient id="heroGradH" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="#f5ebe3" stopOpacity="0.1" />
-            <stop offset="50%" stopColor="#e8b896" />
-            <stop offset="100%" stopColor="#c85a32" />
+          {/* Dark-mode runner: warm white → rust-orange */}
+          <linearGradient id="hcl-grad-dark" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%"   stopColor="#f5ebe3" stopOpacity="0"    />
+            <stop offset="18%"  stopColor="#f0ddd0" stopOpacity="0.9"  />
+            <stop offset="58%"  stopColor="#c85a32" stopOpacity="1"    />
+            <stop offset="100%" stopColor="#a84422" stopOpacity="0"    />
+          </linearGradient>
+          {/* Light-mode runner: visible dark-rust on gray bg */}
+          <linearGradient id="hcl-grad-light" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%"   stopColor="#7a2e12" stopOpacity="0"    />
+            <stop offset="18%"  stopColor="#a84422" stopOpacity="0.85" />
+            <stop offset="58%"  stopColor="#6b2010" stopOpacity="1"    />
+            <stop offset="100%" stopColor="#5c1e08" stopOpacity="0"    />
           </linearGradient>
         </defs>
 
-        {/* Line 1 Base */}
+        {/* ── Line 1 base trace ── */}
         <path
           d={line1Path}
           stroke="var(--cgpt-divider)"
           strokeWidth="1"
-          opacity="0.3"
+          opacity="0.55"
         />
-        {/* Line 1 Animated Runner */}
+        {/* Line 1 animated runner — dark mode */}
         <path
-          className="cgpt-line-animaton cgpt-line-animaton--loop"
+          className="cgpt-line-animaton cgpt-line-animaton--loop hcl-runner hcl-runner--dark"
           d={line1Path}
-          stroke="url(#heroGradH)"
-          strokeWidth="1"
+          pathLength={100}
+          stroke="url(#hcl-grad-dark)"
+          strokeWidth="1.5"
         />
+        {/* Line 1 animated runner — light mode */}
+        <path
+          className="cgpt-line-animaton cgpt-line-animaton--loop hcl-runner hcl-runner--light"
+          d={line1Path}
+          pathLength={100}
+          stroke="url(#hcl-grad-light)"
+          strokeWidth="1.5"
+        />
+        {/* Line 1 junction nodes */}
+        {line1Nodes.map((n, i) => (
+          <rect
+            key={`l1n${i}`}
+            x={n.x - 2} y={n.y - 2}
+            width={4} height={4}
+            fill="var(--cgpt-divider)"
+            opacity="0.6"
+          />
+        ))}
 
-        {/* Line 2 Base */}
+        {/* ── Line 2 base trace ── */}
         <path
           d={line2Path}
           stroke="var(--cgpt-divider)"
           strokeWidth="1"
-          opacity="0.3"
+          opacity="0.55"
         />
-        {/* Line 2 Animated Runner */}
+        {/* Line 2 animated runner — dark mode */}
         <path
-          className="cgpt-line-animaton cgpt-line-animaton--loop"
+          className="cgpt-line-animaton cgpt-line-animaton--loop hcl-runner hcl-runner--dark"
           d={line2Path}
-          stroke="url(#heroGradH)"
-          strokeWidth="1"
+          pathLength={100}
+          stroke="url(#hcl-grad-dark)"
+          strokeWidth="1.5"
           style={{ animationDelay: "1.5s" }}
         />
+        {/* Line 2 animated runner — light mode */}
+        <path
+          className="cgpt-line-animaton cgpt-line-animaton--loop hcl-runner hcl-runner--light"
+          d={line2Path}
+          pathLength={100}
+          stroke="url(#hcl-grad-light)"
+          strokeWidth="1.5"
+          style={{ animationDelay: "1.5s" }}
+        />
+        {/* Line 2 junction nodes */}
+        {line2Nodes.map((n, i) => (
+          <rect
+            key={`l2n${i}`}
+            x={n.x - 2} y={n.y - 2}
+            width={4} height={4}
+            fill="var(--cgpt-divider)"
+            opacity="0.6"
+          />
+        ))}
       </svg>
     </div>
   );

@@ -6,7 +6,7 @@ import { SectionHead } from "@/components/chaingpt/SectionHead";
 
 export function BuyerEntrySection() {
   return (
-    <section id="buyer-models" className="relative border-t border-white/[0.06] bg-black py-16 lg:py-20">
+    <section id="buyer-models" className="relative border-t border-white/[0.06] lc-section-bg py-16 lg:py-20">
       <div className="lc-page-column">
         <SectionHead title="Whatever your commerce model," titleAccent="we have built it before." />
 
