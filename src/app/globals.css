@@ -1,0 +1,119 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #000000;
+  --fg: #efefe5;
+  --muted: #6b7280;
+  --teal: #26f4d0;
+  --purple: #724ce8;
+  --orange: #fc6756;
+  --gold: #f8cf3e;
+  --border: rgba(255, 255, 255, 0.08);
+}
+
+@theme inline {
+  --color-background: var(--bg);
+  --color-foreground: var(--fg);
+  --font-sans: var(--font-roboto-mono);
+  --font-mono: var(--font-roboto-mono);
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+html {
+  font-size: 16px;
+}
+
+@media (min-width: 1440px) {
+  html {
+    font-size: calc(16px + 0.15vw);
+  }
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-roboto-mono), "Roboto Mono", monospace;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: rgba(38, 244, 208, 0.2);
+}
+
+/* Global focus-visible ring — teal accent at 40% opacity */
+:focus-visible {
+  outline: 2px solid rgba(38, 244, 208, 0.4);
+  outline-offset: 2px;
+}
+
+.cgpt-grid-bg {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: #000;
+}
+
+.cgpt-glitch {
+  text-shadow: 0.5px 0 0 rgba(255, 0, 80, 0.35), -0.5px 0 0 rgba(0, 200, 255, 0.35);
+}
+
+.cgpt-gradient-border-ai {
+  border: 1.5px solid transparent;
+  border-radius: 4px;
+  background:
+    linear-gradient(#000, #000) padding-box,
+    linear-gradient(135deg, #26f4d0, #f8cf3e, #fc6756) border-box;
+}
+
+/* Section head dash-runner animation */
+@keyframes cgptDashRunner {
+  0% {
+    stroke-dasharray: 0% 150%;
+    stroke-dashoffset: 0%;
+  }
+  60% {
+    stroke-dasharray: 80% 150%;
+    stroke-dashoffset: -10%;
+  }
+  100% {
+    stroke-dasharray: 80% 150%;
+    stroke-dashoffset: -160%;
+  }
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+
+.cgpt-gradient-border-rev {
+  border: 1.5px solid transparent;
+  border-radius: 4px;
+  background:
+    linear-gradient(#000, #000) padding-box,
+    linear-gradient(90deg, #724ce8, #26f4d0, #4f6bff) border-box;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(38, 244, 208, 0.35);
+}
