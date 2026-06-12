@@ -165,7 +165,10 @@ html[data-theme="light"] .cgpt-prompt-ghost-container,
 html[data-theme="light"] .cgpt-prompt-ghost-container span {
   color: rgba(0, 0, 0, 0.6) !important;
 }
-html[data-theme="light"] .cgpt-hero-slider-quote,
+html[data-theme="light"] .cgpt-hero-slider-quote {
+  border-color: #000000 !important;
+  background-color: #D9D9D9 !important;
+}
 html[data-theme="light"] .cgpt-hero-slider-wrap {
   border-color: #000000 !important;
 }
@@ -348,10 +351,20 @@ html[data-theme="light"] .cgpt-feature-item {
 
 html[data-theme="light"] .cgpt-feature-item-text {
   color: rgba(0, 0, 0, 0.5) !important;
+  transition: color 0.18s ease;
 }
 
 html[data-theme="light"] .cgpt-feature-item-chevron {
   color: rgba(0, 0, 0, 0.35) !important;
+  transition: color 0.18s ease;
+}
+
+html[data-theme="light"] .cgpt-feature-item:hover .cgpt-feature-item-text {
+  color: #000000 !important;
+}
+
+html[data-theme="light"] .cgpt-feature-item:hover .cgpt-feature-item-chevron {
+  color: #000000 !important;
 }
 
 /* Light theme: Rail glow — reduce intensity */
@@ -1775,14 +1788,12 @@ html[data-theme="light"] .hcl-runner--light {
 
 .cgpt-service-nav {
   position: fixed;
-  top: 60px;
-  /* Push the panel's RIGHT edge just inside the aside-rail dot column  */
-  right: calc(2.1vw + 2rem);
-  bottom: 0;
+  top: 90px;
+  right: 2.1vw;
   z-index: 11;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   pointer-events: none;
   padding: 0;
   /*
@@ -1818,6 +1829,23 @@ html[data-theme="light"] .hcl-runner--light {
   text-transform: uppercase;
   /* color: rgba(239, 239, 229, 0.38); */
   color: rgba(255,255,255);
+}
+
+.cgpt-service-nav-header-arrow {
+  color: #26f4d0;
+  margin-left: 0.35rem;
+  font-size: 0.65rem;
+  font-weight: bold;
+  display: inline-block;
+  vertical-align: baseline;
+  position: relative;
+  top: -1px;
+  line-height: 1;
+  transition: transform 0.2s ease, color 0.18s ease;
+}
+
+.cgpt-service-nav-header:hover .cgpt-service-nav-header-arrow {
+  transform: translate(1.5px, -1.5px);
 }
 
 /* List container */
@@ -1890,12 +1918,15 @@ html[data-theme="light"] .hcl-runner--light {
   color: rgba(239, 239, 229, 0.92);
 }
 
-/* Small teal dot on the right — only visible for active item */
+/* Right arrow indicator on the right — only visible for active item */
 .cgpt-service-nav-item-indicator {
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: #26f4d0;
+  color: #26f4d0;
+  font-family: var(--lc-font);
+  font-size: 0.75rem;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   flex-shrink: 0;
   margin-left: 0.5rem;
   animation: cgpt-service-nav-fade-in 0.25s ease forwards;
@@ -1915,7 +1946,13 @@ html[data-theme="light"] .hcl-runner--light {
 
 /* Light theme overrides */
 html[data-theme="light"] .cgpt-service-nav-header-text {
-  color: rgba(0, 0, 0, 0.38) !important;
+  color: #000000 !important;
+}
+html[data-theme="light"] .cgpt-service-nav-header-arrow {
+  color: #000000 !important;
+}
+html[data-theme="light"] .cgpt-service-nav-item-indicator {
+  color: #000000 !important;
 }
 html[data-theme="light"] .cgpt-service-nav-item-text {
   color: rgba(0, 0, 0, 0.28) !important;
@@ -2543,6 +2580,7 @@ html[data-theme="light"] .cgpt-service-nav-item:hover {
   font-size: 0.5rem;
   line-height: 1;
   margin-bottom: 0.1em;
+  transition: color 0.18s ease;
 }
 
 .cgpt-feature-item-text {
@@ -2551,6 +2589,19 @@ html[data-theme="light"] .cgpt-service-nav-item:hover {
   letter-spacing: 0.08em;
   color: rgba(239, 239, 229, 0.45);
   text-transform: uppercase;
+  transition: color 0.18s ease;
+}
+
+.cgpt-feature-item {
+  cursor: pointer;
+}
+
+.cgpt-feature-item:hover .cgpt-feature-item-text {
+  color: #26f4d0;
+}
+
+.cgpt-feature-item:hover .cgpt-feature-item-chevron {
+  color: #26f4d0;
 }
 
 @keyframes cgptFadeSlideIn {

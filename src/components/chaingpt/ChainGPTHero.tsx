@@ -5,7 +5,6 @@ import { HeroWebGL } from "@/components/chaingpt/HeroWebGL";
 import { HeroPromptSlider } from "@/components/chaingpt/HeroPromptSlider";
 import { HeroFeatureSlider } from "@/components/chaingpt/HeroFeatureSlider";
 import { HeroHeadings } from "@/components/chaingpt/HeroHeadings";
-import { HeroAsideRail } from "@/components/chaingpt/HeroAsideRail";
 import { HeroServiceNav } from "@/components/chaingpt/HeroServiceNav";
 import { ScrollExploreLink } from "@/components/chaingpt/ScrollExploreLink";
 import { HeroConnectionLines } from "@/components/chaingpt/HeroConnectionLines";
@@ -25,8 +24,6 @@ export function ChainGPTHero() {
     <section id="intro" className="cgpt-hero cgpt-grid-bg">
       {/* fixed full-viewport canvas, z-index: 5 */}
       <HeroWebGL />
-      {/* fixed right dot rail, z-index: 12 */}
-      <HeroAsideRail />
       {/* fixed right service nav panel, z-index: 11 */}
       <HeroServiceNav />
 

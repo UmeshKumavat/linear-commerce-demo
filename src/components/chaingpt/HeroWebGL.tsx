@@ -131,16 +131,25 @@ export function HeroWebGL({ expression = "neutral" }: HeroWebGLProps) {
       // Traverses meshes to override loaded orange body parts with gunmetal metallic grey
       bakedMesh.traverse((child) => {
         if (child instanceof THREE.Mesh) {
+          // Hide the hologram/screen plane/tablet plate mesh in front of the robot
+          if (
+            /plane|plate|tablet|card|hologram|board|touch|scheme/i.test(
+              child.name,
+            )
+          ) {
+            child.visible = false;
+            return;
+          }
           const mat = child.material;
           if (mat) {
             const materials = Array.isArray(mat) ? mat : [mat];
             materials.forEach((m) => {
-              if (m && 'color' in m) {
+              if (m && "color" in m) {
                 const c = (m as any).color;
                 if (c && c.r > 0.4 && c.b < 0.35) {
                   c.setHex(0x353535); // gunmetal grey
-                  if ('metalness' in m) (m as any).metalness = 0.92;
-                  if ('roughness' in m) (m as any).roughness = 0.22;
+                  if ("metalness" in m) (m as any).metalness = 0.92;
+                  if ("roughness" in m) (m as any).roughness = 0.22;
                 }
               }
             });
@@ -150,7 +159,10 @@ export function HeroWebGL({ expression = "neutral" }: HeroWebGLProps) {
 
       const face = bakedMesh.getObjectByName("FACE") as THREE.Mesh | undefined;
       if (face?.geometry) {
-        face.geometry.setAttribute("uv", new THREE.BufferAttribute(uvsArray, 2));
+        face.geometry.setAttribute(
+          "uv",
+          new THREE.BufferAttribute(uvsArray, 2),
+        );
         face.material = new THREE.ShaderMaterial({
           vertexShader,
           fragmentShader,
@@ -187,7 +199,10 @@ export function HeroWebGL({ expression = "neutral" }: HeroWebGLProps) {
       const hero = document.getElementById("intro");
       if (!hero) return;
       const rect = hero.getBoundingClientRect();
-      const progress = Math.min(1, Math.max(0, -rect.top / (hero.offsetHeight * 0.85)));
+      const progress = Math.min(
+        1,
+        Math.max(0, -rect.top / (hero.offsetHeight * 0.85)),
+      );
       const eased = 1 - Math.pow(1 - progress, 2);
 
       container.style.opacity = String(Math.max(0, 1 - eased * 1.1));

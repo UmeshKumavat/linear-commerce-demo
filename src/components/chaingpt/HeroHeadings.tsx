@@ -27,9 +27,25 @@ function ResponsiveTopStrokeBox({ children }: { children: React.ReactNode }) {
     <div ref={ref} className="cgpt-hero-heading-top relative w-fit">
       {children}
       <div className="absolute inset-0 pointer-events-none">
-        <svg width={w} height={h} viewBox={`0 0 ${w} ${h}`} fill="none" style={{ overflow: "visible" }}>
-          <path d={dA} stroke="url(#hsA)" strokeWidth="2.5" strokeLinecap="round" />
-          <path d={dB} stroke="url(#hsB)" strokeWidth="2.5" strokeLinecap="round" />
+        <svg
+          width={w}
+          height={h}
+          viewBox={`0 0 ${w} ${h}`}
+          fill="none"
+          style={{ overflow: "visible" }}
+        >
+          <path
+            d={dA}
+            stroke="url(#hsA)"
+            strokeWidth="2.5"
+            strokeLinecap="round"
+          />
+          <path
+            d={dB}
+            stroke="url(#hsB)"
+            strokeWidth="2.5"
+            strokeLinecap="round"
+          />
           <defs>
             <linearGradient id="hsA" x1="0%" y1="100%" x2="100%" y2="0%">
               <stop stopColor="#F8CF3E" />
@@ -46,7 +62,11 @@ function ResponsiveTopStrokeBox({ children }: { children: React.ReactNode }) {
   );
 }
 
-function ResponsiveBottomStrokeBox({ children }: { children: React.ReactNode }) {
+function ResponsiveBottomStrokeBox({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   const ref = useRef<HTMLDivElement>(null);
   const [size, setSize] = useState({ w: 115, h: 88 });
 
@@ -71,9 +91,25 @@ function ResponsiveBottomStrokeBox({ children }: { children: React.ReactNode }) 
     <div ref={ref} className="cgpt-hero-heading-bottom relative w-fit">
       {children}
       <div className="absolute inset-0 pointer-events-none">
-        <svg width={w} height={h} viewBox={`0 0 ${w} ${h}`} fill="none" style={{ overflow: "visible" }}>
-          <path d={dC} stroke="url(#hsC)" strokeWidth="2.5" strokeLinecap="round" />
-          <path d={dD} stroke="url(#hsD)" strokeWidth="2.5" strokeLinecap="round" />
+        <svg
+          width={w}
+          height={h}
+          viewBox={`0 0 ${w} ${h}`}
+          fill="none"
+          style={{ overflow: "visible" }}
+        >
+          <path
+            d={dC}
+            stroke="url(#hsC)"
+            strokeWidth="2.5"
+            strokeLinecap="round"
+          />
+          <path
+            d={"M 73 36 H 131 L 144 23 V 1"}
+            stroke="url(#hsD)"
+            strokeWidth="2.5"
+            strokeLinecap="round"
+          />
           <defs>
             <linearGradient id="hsC" x1="0" y1="0" x2={w} y2={h}>
               <stop stopColor="#724CE8" />
@@ -93,23 +129,47 @@ function ResponsiveBottomStrokeBox({ children }: { children: React.ReactNode }) 
 export function HeroHeadings() {
   return (
     <div className="pb-1">
-      <p className="uppercase text-[var(--cgpt-text)] opacity-40" style={{ fontSize: "0.6875rem", letterSpacing: "0.28em", marginBottom: "0.25rem", lineHeight: "1.3" }}>
+      <p
+        className="uppercase text-[var(--cgpt-text)] opacity-40"
+        style={{
+          fontSize: "0.6875rem",
+          letterSpacing: "0.28em",
+          marginBottom: "0.25rem",
+          lineHeight: "1.3",
+        }}
+      >
         BUILT FOR COMPLEXITY.
       </p>
-      <p className="uppercase text-[var(--cgpt-text)] opacity-40" style={{ fontSize: "0.6875rem", letterSpacing: "0.28em", marginBottom: "0.5rem", lineHeight: "1.3" }}>
+      <p
+        className="uppercase text-[var(--cgpt-text)] opacity-40"
+        style={{
+          fontSize: "0.6875rem",
+          letterSpacing: "0.28em",
+          marginBottom: "0.5rem",
+          lineHeight: "1.3",
+        }}
+      >
         BUILT FOR SCALE.
       </p>
       <div
         className="cgpt-hero-heading"
-        style={{ ["--cgpt-hero-title-size" as any]: "clamp(0.75rem, 1.3vw, 1rem)" }}
+        style={{
+          ["--cgpt-hero-title-size" as any]: "clamp(0.75rem, 1.3vw, 1rem)",
+        }}
       >
         <ResponsiveTopStrokeBox>
-          <h4 className="cgpt-heading-4 whitespace-nowrap" style={{ whiteSpace: "nowrap" }}>
+          <h4
+            className="cgpt-heading-4 whitespace-nowrap"
+            style={{ whiteSpace: "nowrap" }}
+          >
             FOR BUSINESSES THAT HAVE OUTGROWN
           </h4>
         </ResponsiveTopStrokeBox>
         <ResponsiveBottomStrokeBox>
-          <h4 className="cgpt-heading-4 whitespace-nowrap" style={{ whiteSpace: "nowrap" }}>
+          <h4
+            className="cgpt-heading-4 whitespace-nowrap"
+            style={{ whiteSpace: "nowrap" }}
+          >
             THEMSELVES.
           </h4>
         </ResponsiveBottomStrokeBox>

@@ -37,7 +37,7 @@ export function HeroServiceNav() {
       <div className="cgpt-service-nav-header">
         {/* <span className="cgpt-service-nav-header-dot" /> */}
         <span className="cgpt-service-nav-header-text">
-          Explore All Services <span style={{ color: "#26f4d0" }}>↗</span>
+          Explore All Services<span className="cgpt-service-nav-header-arrow">↗</span>
         </span>
       </div>
 
@@ -53,7 +53,9 @@ export function HeroServiceNav() {
               <span className="cgpt-service-nav-item-bar" />
               <span className="cgpt-service-nav-item-text">{svc.label}</span>
               {i === activeIndex && (
-                <span className="cgpt-service-nav-item-indicator" aria-hidden />
+                <span className="cgpt-service-nav-item-indicator" aria-hidden>
+                  →
+                </span>
               )}
             </a>
           </li>
